@@ -1,0 +1,69 @@
+openapi: 3.0.1
+info:
+  title: Nice title about your server API goes here.
+  description: Nice description about your server API goes here.
+  version: 1.0.0
+  x-authors:
+    - Student 1
+    - Student 2
+    - Student 3
+    - etc
+
+servers:
+  - url: http://localhost:8080/
+    description: Local development
+# Vert.x bug:
+# Never uncommented production URL, unless for testing production environment from the local machine
+# The program will not work if the production URL is uncommented
+#  - url: https://project-2.ti.howest.be/2024-2025/group-19/
+#    description: Production
+
+paths:
+  /api/health:
+    get:
+      summary: Health check
+      description: Check the health of the application
+      operationId: healthCheck
+      tags:
+        - Health
+      responses:
+        "200":
+          description: Application is healthy
+        "500":
+          description: Application is unhealthy
+
+  /api/subscribe:
+    post:
+      summary: Subscribe to notifications
+      description: Subscribe to receive notifications
+      operationId: subscribe
+      tags:
+        - Notifications
+      requestBody:
+        description: Data required to subscribe to notifications
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                endpoint:
+                  type: string
+                  description: URL to receive notifications
+                keys:
+                  type: object
+                  properties:
+                    p256dh:
+                      type: string
+                      description: Public key for encryption
+                    auth:
+                      type: string
+                      description: Authentication secret
+      responses:
+        "201":
+          description: Subscription successful
+        "400":
+          description: Invalid input or missing required fields
+        "500":
+          description: Internal server error
+        
+# Make sure to create schema components for the response and request body

@@ -48,7 +48,7 @@ public class Address {
         return addresstype;
     }
 
-    public void setAddresstype( AddressType addresstype ) {
+    public void setAddressType( AddressType addresstype ) {
         this.addresstype = addresstype;
     }
 

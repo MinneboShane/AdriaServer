@@ -1,6 +1,7 @@
 package be.howest.adria.domain;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -13,6 +14,12 @@ public class Order {
     private PaymentType paymentType;
     private double orderWeight;
     private OrderStatus orderStatus;
+
+    private List<Product> products;
+    private List<Return> returns;
+    private TaxRate taxRate;
+
+
 
     public Order( UUID orderId, Date orderDate, Address orderAddress, double orderAmount, DeliveryType deliveryType, double orderWeight, PaymentType paymentType, OrderStatus orderStatus ) {
         this.orderId = orderId;

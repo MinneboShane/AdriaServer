@@ -1,5 +1,6 @@
 package be.howest.adria.domain;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -10,6 +11,9 @@ public class Supplier {
     private String phoneNumber;
     private String email;
     private Address address;
+
+    List<Product> products;
+
 
     public Supplier( UUID supplierId, String name, String contactName, String phoneNumber, String email, Address address ) {
         this.supplierId = supplierId;
@@ -67,6 +71,9 @@ public class Supplier {
     public void setAddress( Address address ) {
         this.address = address;
     }
+
+    // methods
+
 
     @Override
     public boolean equals( Object o ) {

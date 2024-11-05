@@ -1,25 +1,43 @@
 package be.howest.adria.domain;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 public class User {
     private UUID userId;
+    private String nationalRegisterNumber;
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
     private String phoneNumber;
-    private Address address;
     private NotificationType notificationType;
 
-    public User(UUID userId, String firstName, String lastName, String email, String phoneNumber, Address address, Notification notificationType) {
+    private List<Order> orders;
+    private List<Review> reviews;
+    private List<Address> addresses;
+    private List<Wishlist> wishlists;
+    private Membership membership;
+    private LoyaltyProgram loyaltyProgram;
+    private List<Return> returns;
+
+    public static User create(String firstName, String lastName, String email, String nationalRegisterNumber, String phoneNumber, NotificationType notificationType) {
+        return new User(UUID.randomUUID(), firstName, lastName, email, nationalRegisterNumber, phoneNumber, notificationType);
+    }
+
+    public static User create(UUID id, String firstName, String lastName, String email, String nationalRegisterNumber, String phoneNumber, NotificationType notificationType) {
+        return new User(id, firstName, lastName, email, nationalRegisterNumber, phoneNumber, notificationType);
+    }
+
+    private User(UUID userId, String firstName, String lastName, String email, String nationalRegisterNumber, String phoneNumber, NotificationType notificationType) {
         this.userId = userId;
+        this.nationalRegisterNumber = nationalRegisterNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.address = address;
+        this.notificationType = notificationType;
     }
 
     public UUID getUserId() {
@@ -54,12 +72,12 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getNationalRegisterNumber() {
+        return nationalRegisterNumber;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setNationalRegisterNumber(String nationalRegisterNumber) {
+        this.nationalRegisterNumber = nationalRegisterNumber;
     }
 
     public String getPhoneNumber() {
@@ -70,45 +88,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
-
     public NotificationType getNotificationType() {
         return notificationType;
-    }
-
-    public void setNotificationType( NotificationType notificationType ) {
-        this.notificationType = notificationType;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return userId == user.userId && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId, firstName, lastName);
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", address=" + address +
-                ", wantsNotification=" + notificationType +
-                '}';
     }
 }

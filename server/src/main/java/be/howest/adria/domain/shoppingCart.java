@@ -1,6 +1,7 @@
 package be.howest.adria.domain;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -8,6 +9,9 @@ public class shoppingCart {
     private UUID shoppingCartId;
     private UUID orderId;
     private Date dateCreated;
+
+    List<Product> productsInCart;
+
 
     public shoppingCart( UUID shoppingCartId, UUID orderId, Date dateCreated ) {
         this.shoppingCartId = shoppingCartId;

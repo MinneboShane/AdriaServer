@@ -1,5 +1,6 @@
 package be.howest.adria.domain;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -10,6 +11,8 @@ public class Product {
     private double price;
     private CategoryType categoryType;
     private double weight;
+
+    List<Review> reviews;
 
     public Product( UUID productId, int name, String description, double price, CategoryType categoryType, double weight ) {
         this.productId = productId;

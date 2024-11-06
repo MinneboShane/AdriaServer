@@ -4,22 +4,30 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Wishlist {
-    private UUID wishlistID;
+    private UUID wishlistId;
     private UUID userId;
     private String name;
 
-    public Wishlist( UUID id, UUID userId, String name ) {
-        this.wishlistID = id;
+    public static Wishlist create(UUID userId, String name) {
+        return new Wishlist(UUID.randomUUID(), userId, name);
+    }
+
+    public static Wishlist create(UUID wishlistId, UUID userId, String name) {
+        return new Wishlist(wishlistId, userId, name);
+    }
+
+    public Wishlist( UUID wishlistId, UUID userId, String name ) {
+        this.wishlistId = wishlistId;
         this.userId = userId;
         this.name = name;
     }
 
-    public UUID getWishlistID() {
-        return wishlistID;
+    public UUID getWishlistId() {
+        return wishlistId;
     }
 
-    public void setWishlistID( UUID wishlistID ) {
-        this.wishlistID = wishlistID;
+    public void setWishlistId( UUID wishlistId ) {
+        this.wishlistId = wishlistId;
     }
 
     public UUID getUserId() {
@@ -36,27 +44,5 @@ public class Wishlist {
 
     public void setName( String name ) {
         this.name = name;
-    }
-
-    @Override
-    public boolean equals( Object o ) {
-        if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
-        Wishlist wishlist = ( Wishlist ) o;
-        return wishlistID == wishlist.wishlistID;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(wishlistID);
-    }
-
-    @Override
-    public String toString() {
-        return "Wishlist{" +
-                "id=" + wishlistID +
-                ", userId=" + userId +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

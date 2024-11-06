@@ -16,7 +16,7 @@ public class CreateUser implements UseCase<CreateUserInput> {
 
     @Override
     public void execute(CreateUserInput input) {
-        User user = User.create(input.firstName, input.lastName, input.email, input.nationalRegistryNumber, input.phoneNumber, input.notificationType);
+        User user = User.create(input.nationalRegistryNumber, input.firstName, input.lastName, input.email,  input.phoneNumber, input.notificationType);
         userRepository.save(user);
         outputPort.present(new CreateUserOutput(user.getUserId()));
     }

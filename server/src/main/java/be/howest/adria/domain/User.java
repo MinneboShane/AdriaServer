@@ -16,21 +16,20 @@ public class User {
 
     private List<Order> orders;
     private List<Review> reviews;
-    private List<Address> addresses;
     private List<Wishlist> wishlists;
     private Membership membership;
     private LoyaltyProgram loyaltyProgram;
     private List<Return> returns;
 
-    public static User create(String firstName, String lastName, String email, String nationalRegisterNumber, String phoneNumber, NotificationType notificationType) {
-        return new User(UUID.randomUUID(), firstName, lastName, email, nationalRegisterNumber, phoneNumber, notificationType);
+    public static User create(String nationalRegisterNumber, String firstName, String lastName, String email,  String phoneNumber, NotificationType notificationType) {
+        return new User(UUID.randomUUID(), nationalRegisterNumber, firstName, lastName, email,  phoneNumber, notificationType);
     }
 
-    public static User create(UUID id, String firstName, String lastName, String email, String nationalRegisterNumber, String phoneNumber, NotificationType notificationType) {
-        return new User(id, firstName, lastName, email, nationalRegisterNumber, phoneNumber, notificationType);
+    public static User create(UUID userId, String nationalRegisterNumber, String firstName, String lastName, String email,  String phoneNumber, NotificationType notificationType) {
+        return new User(userId, nationalRegisterNumber, firstName, lastName, email,  phoneNumber, notificationType);
     }
 
-    private User(UUID userId, String firstName, String lastName, String email, String nationalRegisterNumber, String phoneNumber, NotificationType notificationType) {
+    private User(UUID userId, String nationalRegisterNumber, String firstName, String lastName, String email,  String phoneNumber, NotificationType notificationType) {
         this.userId = userId;
         this.nationalRegisterNumber = nationalRegisterNumber;
         this.firstName = firstName;
@@ -46,6 +45,14 @@ public class User {
 
     public void setUserId(UUID userId) {
         this.userId = userId;
+    }
+
+    public String getNationalRegisterNumber() {
+        return nationalRegisterNumber;
+    }
+
+    public void setNationalRegisterNumber(String nationalRegisterNumber) {
+        this.nationalRegisterNumber = nationalRegisterNumber;
     }
 
     public String getFirstName() {
@@ -70,14 +77,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getNationalRegisterNumber() {
-        return nationalRegisterNumber;
-    }
-
-    public void setNationalRegisterNumber(String nationalRegisterNumber) {
-        this.nationalRegisterNumber = nationalRegisterNumber;
     }
 
     public String getPhoneNumber() {

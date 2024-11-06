@@ -6,15 +6,15 @@ import java.util.UUID;
 
 public class Product {
     private UUID productId;
-    private int name;
+    private String name;
     private String description;
-    private double price;
+        private double price;
     private CategoryType categoryType;
     private double weight;
 
     List<Review> reviews;
 
-    public Product( UUID productId, int name, String description, double price, CategoryType categoryType, double weight ) {
+    public Product( UUID productId, String name, String description, double price, CategoryType categoryType, double weight ) {
         this.productId = productId;
         this.name = name;
         this.description = description;
@@ -31,11 +31,11 @@ public class Product {
         this.productId = productId;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName( int name ) {
+    public void setName( String name ) {
         this.name = name;
     }
 
@@ -69,30 +69,5 @@ public class Product {
 
     public void setWeight( double weight ) {
         this.weight = weight;
-    }
-
-    @Override
-    public boolean equals( Object o ) {
-        if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
-        Product product = ( Product ) o;
-        return productId == product.productId;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(productId);
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "productId=" + productId +
-                ", name=" + name +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", categoryType=" + categoryType +
-                ", weight=" + weight +
-                '}';
     }
 }

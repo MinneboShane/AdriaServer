@@ -14,7 +14,6 @@ public class Supplier {
 
     List<Product> products;
 
-
     public Supplier( UUID supplierId, String name, String contactName, String phoneNumber, String email, Address address ) {
         this.supplierId = supplierId;
         this.name = name;
@@ -72,31 +71,4 @@ public class Supplier {
         this.address = address;
     }
 
-    // methods
-
-
-    @Override
-    public boolean equals( Object o ) {
-        if ( this == o ) return true;
-        if ( o == null || getClass() != o.getClass() ) return false;
-        Supplier supplier = ( Supplier ) o;
-        return supplierId == supplier.supplierId;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(supplierId);
-    }
-
-    @Override
-    public String toString() {
-        return "Supplier{" +
-                "supplierId=" + supplierId +
-                ", name='" + name + '\'' +
-                ", contactName='" + contactName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", address=" + address +
-                '}';
-    }
 }

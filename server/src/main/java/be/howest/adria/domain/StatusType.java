@@ -1,9 +1,7 @@
 package be.howest.adria.domain;
 
 public enum StatusType {
-    GUEST,
-    BASIC,
-    PREMIUM,
+    ACTIVE,
     PENDING,
     SUSPENDED,
     BANNED
